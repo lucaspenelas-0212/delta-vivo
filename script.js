@@ -990,10 +990,10 @@ function initMap() {
   }
   map = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
   // Mapa base CARTO Voyager. La key va dentro de la URL.
-  const CARTO_KEY = 'cb1_521f_1_5a3dcd8b114f27f83013e97f';
-  L.tileLayer(`https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=${CARTO_KEY}`, {
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    maxNativeZoom: 16,
+    attribution: 'Mapa base &copy; <a href="https://www.esri.com">Esri</a>, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
   // Rueda del mouse solo después de hacer clic en el mapa
