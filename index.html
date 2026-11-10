@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delta Vivo — Humedales del Delta del Paraná</title>
+  <meta name="description" content="Una exploración interactiva sobre biodiversidad, urbanización y conservación de los humedales argentinos.">
+  <meta name="theme-color" content="#1B4332">
+
+  <!-- Tipografías: Fraunces (serif editorial), Inter (sans), IBM Plex Mono (sección judicial) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { bosque:'#2D6A4F', natural:'#52B788', claro:'#95D5B2', profundo:'#1B4332', crema:'#F6F5EF', arena:'#D8C3A5', oscuro:'#202923' },
+        fontFamily: { serif:['Fraunces','Georgia','serif'], sans:['Inter','system-ui','sans-serif'], mono:['"IBM Plex Mono"','monospace'] }
+      } }
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans">
+
+<div id="progress" class="progress" aria-hidden="true"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header id="nav" class="nav">
+  <a href="#inicio" class="nav__brand" aria-label="Delta Vivo, inicio">
+    <span class="nav__mark" aria-hidden="true"></span>DELTA VIVO
+  </a>
+  <nav class="nav__links" id="navLinks" aria-label="Capítulos">
+    <a href="#corazon"><span>02</span>Humedal</a>
+    <a href="#vida"><span>03</span>Vida</a>
+    <a href="#ciudad"><span>04</span>Ciudad</a>
+    <a href="#perdida"><span>05</span>Pérdida</a>
+    <a href="#justicia"><span>06</span>Justicia</a>
+    <a href="#protectores"><span>07</span>Protectores</a>
+    <a href="#recuperar"><span>08</span>Recuperar</a>
+    <a href="#participa"><span>09</span>Participá</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+    <i data-lucide="menu"></i>
+  </button>
+</header>
+
+<main>
+
+<!-- ============ 01 HERO ============ -->
+<section id="inicio" class="hero" data-section>
+  <div class="hero__bg wimg wimg--bg" id="heroBg" data-wiki="es:Delta del Paraná|en:Paraná Delta|es:Río Paraná" data-w="1920" data-credit="heroCredit"></div>
+  <div class="hero__veil"></div>
+  <svg class="hero__waves" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,140 C240,90 420,190 720,140 C1020,90 1200,170 1440,120 L1440,220 L0,220 Z" fill="#F6F5EF"/>
+    <path d="M0,160 C260,120 460,210 760,165 C1040,125 1240,190 1440,150" fill="none" stroke="#95D5B2" stroke-width="1.2" opacity=".55"/>
+  </svg>
+
+  <div class="hero__content">
+    <p class="eyebrow eyebrow--light">Humedales del Delta del Paraná · Argentina</p>
+    <h1 class="hero__title">DELTA<br><em>VIVO</em></h1>
+    <p class="hero__lead">Lo que el agua sostiene, la ciudad transforma.</p>
+    <p class="hero__sub">Una exploración interactiva sobre biodiversidad, urbanización y conservación de los humedales argentinos.</p>
+    <a href="#corazon" class="btn btn--light">Explorar el Delta <i data-lucide="arrow-down"></i></a>
+  </div>
+
+  <ol class="hero__index" aria-label="Índice">
+    <li><a href="#corazon"><b>02</b> El corazón del Delta</a></li>
+    <li><a href="#vida"><b>03</b> Un ecosistema lleno de vida</a></li>
+    <li><a href="#ciudad"><b>04</b> Cuando la ciudad avanza</a></li>
+    <li><a href="#perdida"><b>05</b> La pérdida invisible</a></li>
+    <li><a href="#justicia"><b>06</b> El Delta ante la justicia</a></li>
+    <li><a href="#protectores"><b>07</b> Los que protegen la vida</a></li>
+    <li><a href="#recuperar"><b>08</b> ¿Todavía podemos recuperarlo?</a></li>
+    <li><a href="#participa"><b>09</b> Participá del cambio</a></li>
+  </ol>
+  <p class="photo-credit photo-credit--hero" id="heroCredit"></p>
+</section>
+
+<!-- ============ 02 EL CORAZÓN DEL DELTA ============ -->
+<section id="corazon" class="sec sec--crema" data-section>
+  <div class="wrap">
+    <header class="chapter reveal">
+      <span class="chapter__num">02</span>
+      <div>
+        <p class="eyebrow">Capítulo dos</p>
+        <h2 class="h2">El corazón del Delta</h2>
+      </div>
+    </header>
+
+    <div class="corazon-grid">
+      <div class="reveal">
+        <p class="lead dropcap">En la provincia de Buenos Aires, entre un 30 % y un 35 % del territorio corresponde a humedales, según estimaciones que varían de acuerdo con cómo se los identifique y delimite. El Delta del Paraná es uno de sus núcleos: un laberinto de islas, arroyos y bañados donde viven carpinchos, aves, peces y cientos de especies de plantas.</p>
+      </div>
+      <aside class="define reveal">
+        <p class="define__label">¿Qué es un humedal?</p>
+        <p class="define__text">Una zona donde el agua está presente de forma <strong>permanente o temporal</strong>: lagunas, bañados, pantanos, esteros y sectores de ríos con vegetación adaptada a la humedad.</p>
+        <ul class="define__list">
+          <li><i data-lucide="droplets"></i>Almacenan agua en las zonas bajas que se inundan.</li>
+          <li><i data-lucide="bird"></i>Dan refugio y alimento a numerosas especies.</li>
+          <li><i data-lucide="waves"></i>Su vegetación de orilla frena la erosión y filtra el agua.</li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <span class="badge badge--est">Estimación</span>
+        <p class="stat__num"><span class="counter" data-target="30">0</span>–<span class="counter" data-target="35">0</span><small>%</small></p>
+        <p class="stat__label">del territorio bonaerense corresponde a humedales. La cifra varía según el criterio de delimitación.</p>
+      </div>
+      <div class="stat">
+        <span class="badge badge--est">Rango según fuentes</span>
+        <p class="stat__num"><span class="counter" data-target="643">0</span>–<span class="counter" data-target="700">0</span></p>
+        <p class="stat__label">especies de plantas, aproximadamente, en los humedales del Delta del Paraná.</p>
+      </div>
+      <div class="stat">
+        <span class="badge badge--doc">Dato documentado</span>
+        <p class="stat__num"><span class="counter" data-target="5200" data-format="thousands">0</span><small>ha</small></p>
+        <p class="stat__label">protege el Parque Nacional Ciervo de los Pantanos: pastizales, bosque de ribera y humedales.</p>
+      </div>
+    </div>
+
+    <div class="corazon-split">
+      <div class="reveal">
+        <h3 class="h3">Dónde están los humedales bonaerenses</h3>
+        <div class="acc" id="habitatList">
+          <div class="acc__item is-open">
+            <button class="acc__head" aria-expanded="true"><span class="acc__n">01</span>Delta del Paraná<i data-lucide="plus"></i></button>
+            <div class="acc__body"><p>Islas, arroyos y bañados que albergan carpinchos, aves, peces y muchas otras especies. Es el escenario central de este recorrido.</p></div>
+          </div>
+          <div class="acc__item">
+            <button class="acc__head" aria-expanded="false"><span class="acc__n">02</span>Bahía de Samborombón<i data-lucide="plus"></i></button>
+            <div class="acc__body"><p>Marismas y ambientes costeros de gran importancia para la fauna.</p></div>
+          </div>
+          <div class="acc__item">
+            <button class="acc__head" aria-expanded="false"><span class="acc__n">03</span>Sistema de lagunas bonaerenses<i data-lucide="plus"></i></button>
+            <div class="acc__body"><p>Lagunas y áreas inundables que funcionan como refugio y zona de alimentación para numerosas especies.</p></div>
+          </div>
+          <div class="acc__item">
+            <button class="acc__head" aria-expanded="false"><span class="acc__n">04</span>Cuenca del río Salado<i data-lucide="plus"></i></button>
+            <div class="acc__body"><p>Zonas bajas que se inundan y ayudan a almacenar agua.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="h3">Qué los amenaza</h3>
+        <ul class="threats">
+          <li><i data-lucide="building-2"></i><span>Expansión urbana</span></li>
+          <li><i data-lucide="mountain"></i><span>Rellenos de terrenos</span></li>
+          <li><i data-lucide="flask-conical"></i><span>Contaminación</span></li>
+          <li><i data-lucide="tractor"></i><span>Actividades agropecuarias</span></li>
+          <li><i data-lucide="flame"></i><span>Incendios</span></li>
+        </ul>
+        <p class="note">Estas acciones pueden destruir hábitats y alterar el movimiento natural del agua.</p>
+      </div>
+    </div>
+
+    <!-- Carrusel de paisajes -->
+    <figure class="carousel reveal" id="landscapeCarousel" aria-roledescription="carrusel" aria-label="Paisajes del humedal">
+      <div class="carousel__viewport">
+        <div class="carousel__track" id="carTrack"></div>
+      </div>
+      <figcaption class="carousel__bar">
+        <div>
+          <p class="carousel__title" id="carCaption">Paisajes del humedal</p>
+          <p class="photo-credit" id="carCredit"></p>
+        </div>
+        <div class="carousel__ctrl">
+          <div class="carousel__dots" id="carDots" role="tablist"></div>
+          <button class="iconbtn" id="carPrev" aria-label="Foto anterior"><i data-lucide="arrow-left"></i></button>
+          <button class="iconbtn" id="carNext" aria-label="Foto siguiente"><i data-lucide="arrow-right"></i></button>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 03 UN ECOSISTEMA LLENO DE VIDA ============ -->
+<section id="vida" class="sec sec--blanco" data-section>
+  <div class="wrap">
+    <header class="chapter chapter--center reveal">
+      <span class="chapter__num">03</span>
+      <div>
+        <p class="eyebrow">Capítulo tres</p>
+        <h2 class="h2">Un ecosistema lleno de vida</h2>
+        <p class="intro">La flora del humedal está adaptada a vivir con los pies en el agua o a resistir las crecidas del río. Entre sus plantas se mueve un elenco de mamíferos, aves, reptiles, anfibios, peces e invertebrados. Tocá cada ficha para ver más.</p>
+      </div>
+    </header>
+
+    <div class="tabs reveal" id="speciesTabs" role="tablist" aria-label="Grupos de especies">
+      <button role="tab" aria-selected="true" data-tab="flora"><i data-lucide="sprout"></i>Flora</button>
+      <button role="tab" aria-selected="false" data-tab="mamiferos"><i data-lucide="paw-print"></i>Mamíferos</button>
+      <button role="tab" aria-selected="false" data-tab="aves"><i data-lucide="bird"></i>Aves</button>
+      <button role="tab" aria-selected="false" data-tab="reptiles"><i data-lucide="turtle"></i>Reptiles y anfibios</button>
+      <button role="tab" aria-selected="false" data-tab="peces"><i data-lucide="fish"></i>Peces e invertebrados</button>
+    </div>
+    <p class="tab-intro" id="tabIntro"></p>
+    <div class="species-grid" id="speciesGrid" role="tabpanel" aria-live="polite"></div>
+    <p class="note note--center">Fotografías obtenidas de Wikimedia Commons a través de Wikipedia, con su autoría y licencia en cada ficha. Si una imagen no carga, se muestra una ilustración.</p>
+  </div>
+</section>
+
+<!-- Modal de especie -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <article class="modal__card">
+    <button class="modal__close iconbtn" id="modalClose" aria-label="Cerrar" data-close><i data-lucide="x"></i></button>
+    <div class="modal__media" id="modalMedia"></div>
+    <div class="modal__body" id="modalBody"></div>
+  </article>
+</div>
+
+<!-- ============ 04 CUANDO LA CIUDAD AVANZA ============ -->
+<section id="ciudad" class="sec sec--oscuro" data-section>
+  <div class="ciudad__bg wimg wimg--bg" id="ciudadBg" data-wiki="es:Nordelta|en:Nordelta" data-w="1920" data-credit="ciudadCredit"></div>
+  <div class="ciudad__veil"></div>
+  <div class="wrap wrap--rel">
+    <header class="chapter reveal">
+      <span class="chapter__num chapter__num--light">04</span>
+      <div>
+        <p class="eyebrow eyebrow--light">Capítulo cuatro</p>
+        <h2 class="h2 h2--light">Cuando la ciudad avanza</h2>
+      </div>
+    </header>
+
+    <blockquote class="pull reveal">“Como el humedal original fue rellenado, el mayor problema hoy es que la fauna queda atrapada entre muros y paredones.”</blockquote>
+    <p class="pull__src reveal">Síntesis de la investigación sobre Nordelta y Villanueva</p>
+
+    <div class="ciudad-grid">
+      <div class="reveal">
+        <p class="body-light">En el partido de Tigre, barrios como <strong>Nordelta</strong> y <strong>Villanueva</strong> se levantaron sobre terrenos que eran humedal. Para construir se elevaron los suelos con rellenos, se excavaron lagunas y se trazaron avenidas. El resultado es un paisaje nuevo, donde la fauna nativa sigue presente pero rodeada de obstáculos.</p>
+      </div>
+
+      <!-- Comparador antes / ahora -->
+      <figure class="compare reveal" id="compare">
+        <div class="compare__stage">
+          <div class="compare__img" id="compareBefore"></div>
+          <div class="compare__top" id="compareTop">
+            <div class="compare__img" id="compareAfter"></div>
+          </div>
+          <div class="compare__handle" id="compareHandle" aria-hidden="true"><span><i data-lucide="move-horizontal"></i></span></div>
+          <span class="compare__tag compare__tag--l" id="compareTagL"></span>
+          <span class="compare__tag compare__tag--r" id="compareTagR"></span>
+          <input type="range" id="compareRange" class="compare__range" min="0" max="100" value="50" aria-label="Deslizá para comparar la zona antes y ahora">
+        </div>
+        <figcaption class="compare__cap" id="compareCap"></figcaption>
+      </figure>
+    </div>
+
+    <ol class="impacts">
+      <li class="impact reveal">
+        <span class="impact__n">01</span>
+        <div><h3>Expansión urbana</h3><p>El avance de barrios cerrados sobre zonas bajas reemplaza ambientes de humedal por superficies construidas. El ciervo de los pantanos quedó acorralado en el Delta por el relleno de tierras para barrios privados.</p></div>
+        <i data-lucide="building-2"></i>
+      </li>
+      <li class="impact reveal">
+        <span class="impact__n">02</span>
+        <div><h3>Rellenos de humedales</h3><p>Para urbanizar se elevan los terrenos. En Nordelta y Villanueva el humedal original fue rellenado: las medidas ambientales que hoy se aplican allí son de mitigación, no de restauración del ambiente previo.</p></div>
+        <i data-lucide="mountain"></i>
+      </li>
+      <li class="impact reveal">
+        <span class="impact__n">03</span>
+        <div><h3>Fragmentación del hábitat</h3><p>El asfalto y los muros dividen el territorio en parches aislados: el llamado <em>efecto isla</em>. Pumas, zorros y otros animales que intentan moverse son atropellados o atacados por animales domésticos.</p></div>
+        <i data-lucide="grid-2x2"></i>
+      </li>
+      <li class="impact reveal">
+        <span class="impact__n">04</span>
+        <div><h3>Alteración de cursos de agua</h3><p>Terraplenes, diques y modificaciones de arroyos cambian el movimiento natural del agua. La pavimentación y la contaminación química, además, hacen perder a ranas y sapos sus fuentes de agua.</p></div>
+        <i data-lucide="waves"></i>
+      </li>
+      <li class="impact reveal">
+        <span class="impact__n">05</span>
+        <div><h3>Impactos sobre la fauna</h3><p>Coipos y carpinchos quedan atrapados entre avenidas y sufren altísimos niveles de atropellamientos. La fauna queda encerrada entre paredones, con el paso libre hacia el río dificultado.</p></div>
+        <i data-lucide="paw-print"></i>
+      </li>
+    </ol>
+
+    <div class="places reveal">
+      <p class="places__title">Territorios mencionados</p>
+      <div class="places__row" id="placesRow"></div>
+    </div>
+    <p class="photo-credit photo-credit--light" id="ciudadCredit"></p>
+  </div>
+</section>
+
+<!-- ============ 05 LA PÉRDIDA INVISIBLE ============ -->
+<section id="perdida" class="sec sec--arena" data-section>
+  <div class="wrap">
+    <header class="chapter reveal">
+      <span class="chapter__num">05</span>
+      <div>
+        <p class="eyebrow">Capítulo cinco</p>
+        <h2 class="h2">La pérdida invisible</h2>
+        <p class="intro">Lo que desaparece primero no siempre se ve: es el bañado que deja de inundarse, el ave que ya no aparece en los registros, el corredor que se corta.</p>
+      </div>
+    </header>
+
+    <div class="bignum reveal">
+      <div>
+        <span class="badge badge--doc">Dato documentado · estudio científico</span>
+        <p class="bignum__n"><span class="counter" data-target="163000" data-format="thousands">0</span><small> ha</small></p>
+        <p class="bignum__t">de bañados de agua dulce se perdieron en el Bajo Delta entre 1999 y 2013: aproximadamente <strong>un tercio</strong> del total.</p>
+      </div>
+      <div class="bignum__side">
+        <p class="bignum__n bignum__n--sm">~<span class="counter" data-target="70">0</span><small>%</small></p>
+        <p class="bignum__t">de esa superficie perdida se convirtió en <strong>pasturas para ganado</strong>, una de las principales causas de pérdida de bañados en ese período.</p>
+      </div>
+    </div>
+
+    <!-- Hábitat vs individuos -->
+    <div class="loss-toggle reveal">
+      <div class="seg" id="lossToggle" role="tablist" aria-label="Qué se mide">
+        <button role="tab" aria-selected="true" data-k="habitat">Pérdida de hábitat</button>
+        <button role="tab" aria-selected="false" data-k="individuos">Disminución de animales</button>
+      </div>
+      <div class="loss-panel" id="lossPanel" aria-live="polite"></div>
+    </div>
+
+    <div class="charts">
+      <figure class="chartbox reveal">
+        <figcaption>
+          <p class="chartbox__t">Bañados de agua dulce del Bajo Delta</p>
+          <p class="chartbox__s">Índice: superficie de 1999 = 100</p>
+        </figcaption>
+        <div class="chartbox__c"><canvas id="chartIndex" aria-label="Gráfico de barras: índice de superficie de bañados, 1999 igual a 100, 2013 aproximadamente 67"></canvas></div>
+        <p class="chartbox__n"><span class="badge badge--der">Cálculo derivado</span> El valor 2013 (≈ 67) surge de “aproximadamente un tercio” perdido. No es una medición independiente.</p>
+      </figure>
+      <figure class="chartbox reveal">
+        <figcaption>
+          <p class="chartbox__t">¿En qué se convirtieron las 163.000 ha?</p>
+          <p class="chartbox__s">Destino de la superficie de bañados perdida, 1999–2013</p>
+        </figcaption>
+        <div class="chartbox__c"><canvas id="chartDestino" aria-label="Gráfico de anillo: cerca del 70 por ciento pasturas para ganado, 30 por ciento otros cambios"></canvas></div>
+        <p class="chartbox__n"><span class="badge badge--der">Cálculo derivado</span> ≈ 114.100 ha (70 %) y ≈ 48.900 ha (30 %). La investigación no detalla en qué consistió el 30 % restante.</p>
+      </figure>
+    </div>
+
+    <h3 class="h3 reveal">Línea de tiempo</h3>
+    <div class="timeline reveal" id="ecoTimeline"></div>
+
+    <div class="global reveal">
+      <div class="global__head">
+        <span class="badge badge--glob">Contexto global</span>
+        <h3 class="h3">Más allá del Delta</h3>
+        <p>Estos datos no corresponden al Delta del Paraná: ayudan a dimensionar el problema a escala mundial.</p>
+      </div>
+      <div class="global__grid">
+        <div class="gcard">
+          <p class="gcard__n">+1 millón</p>
+          <p>de especies están en peligro de extinción, y la pérdida de hábitat es la causa número uno. <span class="src">IPBES, 2019</span></p>
+        </div>
+        <div class="gcard">
+          <p class="gcard__n">~3.000 millones</p>
+          <p>de animales murieron o fueron desplazados por un solo evento extremo: los incendios de Australia de 2019-2020. <span class="src">WWF, 2020</span></p>
+        </div>
+        <div class="gcard">
+          <p class="gcard__n">Sin cifra exacta</p>
+          <p>Se estima que cientos de miles de millones de animales mueren cada año por pérdida de hábitat, pero es casi imposible contarlos: anfibios, insectos y aves pequeñas mueren sin dejar rastro. <span class="badge badge--est">Estimación</span></p>
+        </div>
+      </div>
+
+      <div class="global__how">
+        <p class="global__howt">¿Cómo mueren los animales desplazados?</p>
+        <p>No mueren solo cuando cae el árbol. Mueren en las semanas siguientes:</p>
+        <ul>
+          <li><i data-lucide="wheat-off"></i>Por inanición, al no encontrar alimento en el nuevo lugar.</li>
+          <li><i data-lucide="swords"></i>Por choques territoriales con otros animales.</li>
+          <li><i data-lucide="dog"></i>Por ataques de perros o cazadores al acercarse a las ciudades.</li>
+          <li><i data-lucide="car"></i>Atropellados al intentar cruzar rutas.</li>
+        </ul>
+      </div>
+
+      <div class="extinct">
+        <div>
+          <p class="extinct__t">Ya extintas por urbanización y tala <span class="badge badge--glob">Fuera de Argentina</span></p>
+          <ul>
+            <li><b>Paloma viajera</b> <i>Ectopistes migratorius</i> — fue el ave más abundante de EE. UU.; se extinguió al talarse los bosques donde anidaba.</li>
+            <li><b>Cotorra de Carolina</b> <i>Conuropsis carolinensis</i> — único loro nativo del este norteamericano, extinto por el desarrollo urbano.</li>
+            <li><b>“Rana” dorada de Monteverde</b> <i>Incilius periglenes</i> — en realidad un sapo, desaparecido en Costa Rica. La investigación lo vincula con alteraciones microclimáticas por asentamiento humano <span class="badge badge--ver">A verificar</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="extinct__t">Hoy luchan por sobrevivir</p>
+          <ul>
+            <li><b>Ciervo de los pantanos</b> — acorralado en el Delta por rellenos para barrios privados.</li>
+            <li><b>Ranas y sapos</b> — pierden sus fuentes de agua por pavimentación y contaminación química.</li>
+            <li><b>Coipos y carpinchos</b> — atrapados entre avenidas, con altísimos niveles de atropellamiento.</li>
+            <li><b>Pumas y zorros</b> (y koalas en Australia) — el asfalto fragmenta su territorio: el <em>efecto isla</em>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 EL DELTA ANTE LA JUSTICIA ============ -->
+<section id="justicia" class="sec sec--expediente" data-section>
+  <div class="wrap">
+    <header class="chapter reveal">
+      <span class="chapter__num chapter__num--light">06</span>
+      <div>
+        <p class="eyebrow eyebrow--mono">Capítulo seis · Investigación</p>
+        <h2 class="h2 h2--light">El Delta ante la justicia</h2>
+      </div>
+    </header>
+
+    <div class="justicia-intro">
+      <p class="body-light reveal">En Argentina habría <strong>entre 10 y 30 causas judiciales</strong> vinculadas con la protección de humedales y daños ambientales. No existe un registro nacional unificado que permita confirmar cuántas siguen activas. Este capítulo reúne cuatro casos documentados en la investigación.</p>
+      <div class="stamp reveal">
+        <span class="badge badge--est">Estimación</span>
+        <p class="stamp__n">10–30</p>
+        <p class="stamp__t">causas estimadas · sin registro unificado</p>
+      </div>
+    </div>
+
+    <div class="warn reveal">
+      <i data-lucide="scale"></i>
+      <p><strong>Una denuncia no es una condena.</strong> Un procesamiento tampoco. Este capítulo distingue cada etapa judicial con una etiqueta propia. Las responsabilidades solo quedan establecidas con una sentencia firme.</p>
+    </div>
+
+    <div class="filters reveal">
+      <div class="filters__group">
+        <p class="filters__label">Ubicación</p>
+        <div class="chips" id="filterPlace"></div>
+      </div>
+      <div class="filters__group">
+        <p class="filters__label">Estado judicial</p>
+        <div class="chips" id="filterStatus"></div>
+      </div>
+    </div>
+
+    <div class="justicia-grid">
+      <div class="placelist reveal">
+        <p class="placelist__t">Los lugares de este recorrido</p>
+        <p class="placelist__s">Tocá cada lugar para abrir su sitio oficial o, si no tiene, su ubicación en Google Maps.</p>
+        <div id="placeList"></div>
+      </div>
+      <div class="cases">
+        <p class="cases__count" id="caseCount"></p>
+        <div id="caseList" class="cases__list"></div>
+      </div>
+    </div>
+
+    <details class="glossary reveal">
+      <summary><i data-lucide="book-open"></i>Qué significa cada estado judicial</summary>
+      <dl id="glossaryList"></dl>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 07 LOS QUE PROTEGEN LA VIDA ============ -->
+<section id="protectores" class="sec sec--crema" data-section>
+  <div class="wrap">
+    <header class="chapter reveal">
+      <span class="chapter__num">07</span>
+      <div>
+        <p class="eyebrow">Capítulo siete</p>
+        <h2 class="h2">Los que protegen la vida</h2>
+        <p class="intro">ONG y fundaciones que trabajan por la biodiversidad, desde el rescate de un animal herido hasta la defensa legal de un humedal.</p>
+      </div>
+    </header>
+
+    <!-- Temaikèn destacado -->
+    <article class="featured reveal">
+      <div class="featured__media wimg" data-wiki="es:Temaikèn|en:Temaikèn" data-w="960" data-credit="temaikenCredit"></div>
+      <div class="featured__body">
+        <p class="eyebrow">Pieza central en el Delta</p>
+        <h3 class="h3 h3--big">Fundación Temaikèn</h3>
+        <div class="pillars">
+          <div class="pillar">
+            <i data-lucide="hospital"></i>
+            <h4>Centro de Recuperación de Especies (CRET)</h4>
+            <p>Hospital veterinario de <b>18 hectáreas</b> donde rescatan animales heridos, atropellados o incautados del tráfico ilegal, los curan y rehabilitan. Ya devolvieron <b>más de 4.000</b> a la naturaleza.</p>
+            <span class="badge badge--doc">Según la Memoria Anual 2023 de la fundación</span>
+          </div>
+          <div class="pillar">
+            <i data-lucide="trees"></i>
+            <h4>Programa Delta y conservación de humedales</h4>
+            <p>Lidera el rescate del ciervo de los pantanos, impulsa corredores biológicos para que los animales no queden aislados por autopistas y reforesta con flora nativa.</p>
+          </div>
+          <div class="pillar">
+            <i data-lucide="graduation-cap"></i>
+            <h4>Investigación y educación</h4>
+            <p>Trabaja con isleños y vecinos de barrios cerrados para convivir con la fauna silvestre en lugar de atacarla. Participa del <b>Proyecto Pantano</b> junto con CONICET e INTA.</p>
+          </div>
+        </div>
+        <a class="btn btn--dark" href="https://www.temaiken.org.ar" target="_blank" rel="noopener">Sitio oficial <i data-lucide="arrow-up-right"></i></a>
+        <p class="photo-credit" id="temaikenCredit"></p>
+      </div>
+    </article>
+
+    <div class="orgs reveal">
+      <div class="chips chips--light" id="orgFilters"></div>
+      <ol class="orglist" id="orgList"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 ¿TODAVÍA PODEMOS RECUPERARLO? ============ -->
+<section id="recuperar" class="sec sec--esperanza" data-section>
+  <div class="wrap">
+    <header class="chapter chapter--center reveal">
+      <span class="chapter__num">08</span>
+      <div>
+        <p class="eyebrow">Capítulo ocho</p>
+        <h2 class="h2">¿Todavía podemos recuperarlo?</h2>
+        <p class="intro">Hay formas de convivir con la fauna, reconectar el paisaje y devolverle al humedal parte de lo que perdió. Algunas ya están en marcha.</p>
+      </div>
+    </header>
+
+    <div class="rec reveal">
+      <div class="seg seg--light" id="recTabs" role="tablist" aria-label="Medidas por barrio">
+        <button role="tab" aria-selected="true" data-k="nordelta">Nordelta · AVN</button>
+        <button role="tab" aria-selected="false" data-k="villanueva">Villanueva · EIDICO</button>
+      </div>
+      <div class="rec__panel" id="recPanel" aria-live="polite"></div>
+    </div>
+
+    <div class="balance reveal">
+      <i data-lucide="scale"></i>
+      <div>
+        <p class="balance__t">El balance real</p>
+        <p>Todas estas son <strong>medidas de mitigación</strong>. Como el humedal original fue rellenado, el mayor problema persiste: la fauna queda atrapada entre muros y paredones —el efecto <em>isla urbana</em>— y su paso libre hacia el río sigue dificultado.</p>
+      </div>
+    </div>
+
+    <div class="paths">
+      <article class="path reveal">
+        <i data-lucide="route"></i>
+        <h3>Corredores biológicos</h3>
+        <p>Franjas de hábitat que conectan parches aislados para que los animales no queden atrapados entre autopistas y barrios. Temaikèn los impulsa en el Delta; Villanueva reforesta para conectar con Dique Luján y Villa La Ñata.</p>
+      </article>
+      <article class="path reveal">
+        <i data-lucide="sprout"></i>
+        <h3>Vegetación nativa</h3>
+        <p>Plantar especies autóctonas atrae aves y polinizadores, filtra el agua y repara áreas degradadas. Juncos y totoras en las orillas dan refugio a anfibios, coipos y tortugas.</p>
+      </article>
+      <article class="path reveal">
+        <i data-lucide="heart-pulse"></i>
+        <h3>Rescate de animales</h3>
+        <p>Redes de aviso vecinal, el Municipio y fundaciones como Temaikèn actúan cuando aparece un animal herido o atacado por perros.</p>
+      </article>
+      <article class="path reveal">
+        <i data-lucide="shield-check"></i>
+        <h3>Áreas protegidas</h3>
+        <ul class="path__list">
+          <li><a class="inlink" href="https://www.argentina.gob.ar/parquesnacionales/centro/parque-nacional-ciervo-de-los-pantanos" target="_blank" rel="noopener"><b>Parque Nacional Ciervo de los Pantanos</b></a> — 5.200 ha de pastizales, bosque de ribera y humedales; refugio del ciervo de los pantanos.</li>
+          <li><a class="inlink" href="https://www.argentina.gob.ar/parquesnacionales/centro/parque-nacional-pre-delta/panoramica" target="_blank" rel="noopener"><b>Parque Nacional Pre-Delta</b></a> — en Diamante, Entre Ríos.</li>
+          <li><a class="inlink" href="https://www.google.com/maps/search/?api=1&amp;query=Reserva%20Natural%20Rinc%C3%B3n%20de%20Milberg%2C%20Tigre" target="_blank" rel="noopener"><b>Reserva Natural Rincón de Milberg</b></a> — en Tigre.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 PARTICIPÁ DEL CAMBIO ============ -->
+<section id="participa" class="sec sec--profundo" data-section>
+  <div class="wrap">
+    <header class="chapter reveal">
+      <span class="chapter__num chapter__num--light">09</span>
+      <div>
+        <p class="eyebrow eyebrow--light">Capítulo nueve</p>
+        <h2 class="h2 h2--light">Participá del cambio</h2>
+      </div>
+    </header>
+
+    <div class="participa-grid">
+      <div class="quiz reveal" id="quiz" aria-live="polite"></div>
+
+      <div class="actions reveal">
+        <p class="actions__t">Cinco cosas que podés hacer</p>
+        <ol>
+          <li><i data-lucide="flower-2"></i><div><b>Plantá nativas</b><span>En tu jardín, balcón o escuela: ceibo, sauce criollo y otras especies del Delta atraen aves y polinizadores.</span></div></li>
+          <li><i data-lucide="gauge"></i><div><b>Bajá la velocidad</b><span>En zonas de humedal, los atropellamientos son una de las principales causas de muerte de carpinchos y coipos.</span></div></li>
+          <li><i data-lucide="dog"></i><div><b>Cuidá a tu perro</b><span>Los ataques de perros afectan a ciervos, carpinchos y otros animales que se acercan a zonas urbanas.</span></div></li>
+          <li><i data-lucide="phone"></i><div><b>Avisá, no intervengas</b><span>Si encontrás un animal herido, contactá al Municipio o a un centro de rescate como el de Temaikèn.</span></div></li>
+          <li><i data-lucide="users"></i><div><b>Sumate a una organización</b><span>Voluntariados, campañas y difusión: el capítulo 07 reúne enlaces oficiales.</span></div></li>
+        </ol>
+        <a href="#protectores" class="btn btn--light">Ver organizaciones <i data-lucide="arrow-up"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <div class="closing__bg wimg wimg--bg" id="closingBg" data-wiki="es:Tigre (Buenos Aires)|en:Tigre, Buenos Aires|en:Paraná River" data-w="1920" data-credit="closingCredit"></div>
+    <div class="closing__veil"></div>
+    <p class="closing__msg reveal">El futuro de los humedales<br><em>también depende de nosotros.</em></p>
+    <p class="photo-credit photo-credit--light photo-credit--abs" id="closingCredit"></p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER: FUENTES ============ -->
+<footer class="foot" id="fuentes">
+  <div class="wrap">
+    <div class="foot__top">
+      <p class="foot__brand"><span class="nav__mark" aria-hidden="true"></span>DELTA VIVO</p>
+      <p class="foot__tag">Lo que el agua sostiene, la ciudad transforma.</p>
+    </div>
+
+    <div class="foot__cols">
+      <div>
+        <h3 class="foot__h">Fuentes y referencias</h3>
+        <div id="sourcesList" class="sources"></div>
+      </div>
+      <div>
+        <h3 class="foot__h">Notas metodológicas</h3>
+        <ul class="foot__notes">
+          <li>Las cifras se etiquetan según su naturaleza: dato documentado, estimación, cálculo derivado, contexto global o dato a verificar.</li>
+          <li>La situación judicial de cada caso corresponde a lo informado por las fuentes hasta noviembre de 2026. Las causas pueden haber avanzado desde entonces.</li>
+          <li>Los cálculos derivados del capítulo 05 surgen de “aproximadamente un tercio” y “cerca del 70 %”; no son mediciones independientes.</li>
+        </ul>
+        <h3 class="foot__h">Créditos de imagen</h3>
+        <p class="foot__small">Fotografías de especies y paisajes: Wikimedia Commons, obtenidas a través de la API de Wikipedia; cada imagen enlaza a su página, con su autor y licencia. Vista del río Paraná desde el espacio: NASA Earth Observatory (dominio público). Comparador del capítulo 04: ver el crédito debajo de la imagen.</p>
+      </div>
+    </div>
+
+    <div class="legend legend--foot">
+      <p class="legend__title">Cómo leer los datos de este sitio</p>
+      <div class="legend__row">
+        <span><span class="badge badge--doc">Dato documentado</span> cifra con fuente identificada</span>
+        <span><span class="badge badge--est">Estimación</span> valor aproximado o rango</span>
+        <span><span class="badge badge--der">Cálculo derivado</span> proporción calculada a partir de un dato publicado</span>
+        <span><span class="badge badge--glob">Contexto global</span> no corresponde al Delta</span>
+        <span><span class="badge badge--ver">A verificar</span> dato con fuente incompleta</span>
+      </div>
+    </div>
+
+    <p class="foot__end">Delta Vivo · Proyecto de divulgación ambiental · 2026</p>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Volver arriba"><i data-lucide="arrow-up"></i></button>
+
+<!-- Librerías -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
