@@ -109,7 +109,6 @@ const CASES = [
   {
     id: 'lojda', file: 'Caso 01', company: 'Naviera Lojda S.A.', place: 'ramallo',
     location: 'Humedal de Paso del Tonelero, partido de Ramallo, provincia de Buenos Aires',
-    lat: -33.42, lng: -60.10,
     activity: 'Empresa arenera.',
     problem: 'Intervenciones sobre bañados y humedales costeros de Paso del Tonelero. La investigación las resume como rellenos y pérdida de humedal.',
     area: 'La sentencia ordena reparar 2 hectáreas del humedal (dato verificado en Economía Sustentable).',
@@ -128,8 +127,7 @@ const CASES = [
   },
   {
     id: 'mapuche', file: 'Caso 02', company: 'El Mapuche SRL', place: 'lechiguanas',
-    location: 'Islas Lechiguanas, Delta del Paraná, frente a Ramallo',
-    lat: -33.44, lng: -59.86,
+    location: 'Islas Lechiguanas, departamento Gualeguay (Entre Ríos), frente a Ramallo',
     activity: 'Parte de la explotación agrícola y ganadera del establecimiento se desarrolla a través de esta empresa.',
     problem: 'Terraplenes, modificaciones de cursos de agua y presuntas fumigaciones con agroquímicos. Las obras habrían alterado el movimiento natural del agua.',
     area: 'Unas 5.300 hectáreas de humedales, según informes de organismos provinciales.',
@@ -142,14 +140,14 @@ const CASES = [
     sources: [
       { t: 'Economía Sustentable: informe oficial sobre unas 5.300 hectáreas afectadas', url: 'https://economiasustentable.com/noticias/un-informe-oficial-confirma-el-dano-ambiental-sobre-miles-de-hectareas-en-entre-rios-por-obras-de-empresarios/' },
       { t: 'Eco Urbano: daños ambientales en las Islas Lechiguanas' },
-      { t: 'R2820: investigación por diques y agroquímicos' }
+      { t: 'R2820: investigación por diques y agroquímicos' },
+      { t: 'Prensa Mercosur (03/06/2026): inspección de terraplenes en las Lechiguanas', url: 'https://prensamercosur.org/2026/06/03/la-justicia-ordena-una-inspeccion-de-terraplenes-en-islas-de-las-lechiguanas/' }
     ],
     legal: 'Los informes técnicos sobre daños no equivalen, por sí solos, a una condena judicial.'
   },
   {
     id: 'laureles', file: 'Caso 03', company: 'Establecimiento Los Laureles S.A.', place: 'victoria',
-    location: 'Área de islas de Victoria, Entre Ríos, dentro de un sector protegido de humedales',
-    lat: -32.70, lng: -60.40,
+    location: 'Islas de Victoria, Entre Ríos, a unos 52 km al sur-suroeste de Victoria y 15 km al norte de Villa Constitución, dentro de la Reserva de Usos Múltiples «Humedales e Islas de Victoria»',
     activity: 'Cría y engorde de ganado vacuno.',
     problem: 'Intervenciones sobre el arroyo Colorado: movimientos de suelo, eliminación de vegetación y colocación de estructuras de hormigón para modificar o proteger sectores de la ribera.',
     area: 'Aproximadamente 121 hectáreas de humedal con vegetación eliminada y unos 110 metros de ribera modificados.',
@@ -159,14 +157,14 @@ const CASES = [
     ],
     sources: [
       { t: 'ERA Verde: confirmación del procesamiento' },
-      { t: 'La Gaceta Online: causa judicial en Victoria' }
+      { t: 'La Gaceta Online: causa judicial en Victoria' },
+      { t: 'Prensa Mercosur (25/03/2026): ubicación del predio y detalle de las intervenciones', url: 'https://prensamercosur.org/2026/03/25/el-juez-federal-de-victoria-proceso-a-encargados-de-una-ganadera-por-afectar-humedales-en-el-delta/' }
     ],
     legal: 'Un procesamiento confirmado no es una condena: las personas procesadas no han sido juzgadas.'
   },
   {
     id: 'carboquimica', file: 'Caso 04', company: 'Carboquímica del Paraná S.A.', place: 'ramallo',
-    location: 'Ramallo, provincia de Buenos Aires',
-    lat: -33.50, lng: -60.03,
+    location: 'Complejo Industrial Ramallo, partido de Ramallo, provincia de Buenos Aires',
     activity: 'Industria química vinculada al procesamiento de derivados del alquitrán de hulla.',
     problem: 'Presuntos vertidos contaminantes y enterramiento de residuos peligrosos donde funcionaba la planta. Se menciona contaminación del suelo, el agua y el aire, con impacto sobre la ribera, bosques nativos y humedales costeros, y consecuencias para familias de pescadores.',
     area: 'No documentada en la investigación.',
@@ -185,18 +183,59 @@ const CASES = [
   }
 ];
 
-/* ---------- Puntos de contexto en el mapa (ubicaciones aproximadas) ---------- */
-const POIS = [
-  { layer: 'protegidas', name: 'Parque Nacional Ciervo de los Pantanos', lat: -34.25, lng: -58.86, text: 'Protege 5.200 ha de pastizales, bosque de ribera y humedales. Refugio del ciervo de los pantanos.' },
-  { layer: 'protegidas', name: 'Parque Nacional Pre-Delta', lat: -32.12, lng: -60.64, text: 'Área protegida en Diamante, Entre Ríos.' },
-  { layer: 'protegidas', name: 'Reserva Natural Rincón de Milberg', lat: -34.39, lng: -58.56, text: 'Reserva natural en Tigre.' },
-  { layer: 'urbano', name: 'Nordelta', lat: -34.405, lng: -58.645, text: 'Urbanización sobre humedal rellenado. Aplica un programa de manejo de fauna silvestre.' },
-  { layer: 'urbano', name: 'Villanueva', lat: -34.41, lng: -58.685, text: 'Complejo de EIDICO con corredores ribereños y reforestación nativa.' },
-  { layer: 'urbano', name: 'Tigre', lat: -34.426, lng: -58.58, text: 'Puerta de entrada al Delta y partido donde se concentran las urbanizaciones sobre humedal.' },
-  { layer: 'urbano', name: 'Dique Luján', lat: -34.36, lng: -58.69, text: 'Zona baja que la reforestación de Villanueva busca conectar biológicamente.' },
-  { layer: 'urbano', name: 'Villa La Ñata', lat: -34.385, lng: -58.625, text: 'Zona baja que la reforestación de Villanueva busca conectar biológicamente.' },
-  { layer: 'conservacion', name: 'Fundación Temaikèn', lat: -34.36, lng: -58.82, text: 'Centro de Recuperación de Especies (CRET) y Programa Delta.' }
+/* ---------- Lugares (capítulo 06) ----------
+   url: sitio oficial. maps: búsqueda en Google Maps (para lugares sin sitio propio). */
+const PLACE_GROUPS = [
+  { h: 'Casos judiciales', items: [
+    { name: 'Paso del Tonelero', where: 'Ramallo, Buenos Aires', maps: 'El Tonelero, Ramallo, Buenos Aires',
+      text: 'Bañados y humedales costeros sobre el Paraná. Naviera Lojda S.A. tiene sentencia firme que la obliga a recomponer el ambiente.' },
+    { name: 'Islas Lechiguanas', where: 'Departamento Gualeguay, Entre Ríos', maps: 'Islas Lechiguanas, Entre Ríos',
+      text: 'Frente a Ramallo. Causa en trámite por terraplenes y alteraciones del agua en unas 5.300 ha (El Mapuche SRL).' },
+    { name: 'Islas de Victoria', where: 'Entre Ríos', maps: 'Islas de Victoria, Entre Ríos',
+      text: 'Reserva de Usos Múltiples «Humedales e Islas de Victoria». Procesamiento confirmado por intervenciones sobre el arroyo Colorado (Los Laureles S.A.).' },
+    { name: 'Complejo Industrial Ramallo', where: 'Ramallo, Buenos Aires', maps: 'Complejo Industrial Ramallo, Buenos Aires',
+      text: 'Donde funcionaba la planta de Carboquímica del Paraná S.A. La causa penal fue elevada a juicio en 2025.' }
+  ]},
+  { h: 'Áreas protegidas', items: [
+    { name: 'Parque Nacional Ciervo de los Pantanos', where: 'Campana, Buenos Aires',
+      url: 'https://www.argentina.gob.ar/parquesnacionales/centro/parque-nacional-ciervo-de-los-pantanos',
+      text: 'Protege 5.200 ha de pastizales, bosque de ribera y humedales. Refugio del ciervo de los pantanos.' },
+    { name: 'Parque Nacional Pre-Delta', where: 'Diamante, Entre Ríos',
+      url: 'https://www.argentina.gob.ar/parquesnacionales/centro/parque-nacional-pre-delta/panoramica',
+      text: 'Al comienzo del Delta, sobre la margen izquierda del Paraná.' },
+    { name: 'Reserva Natural Rincón de Milberg', where: 'Tigre, Buenos Aires', maps: 'Reserva Natural Rincón de Milberg, Tigre',
+      text: 'Reserva natural en el partido de Tigre.' }
+  ]},
+  { h: 'Urbanizaciones sobre humedal', items: [
+    { name: 'Tigre', where: 'Buenos Aires', maps: 'Tigre, Buenos Aires',
+      text: 'Puerta de entrada al Delta y partido donde se concentran las urbanizaciones sobre humedal.' },
+    { name: 'Nordelta', where: 'Tigre, Buenos Aires', maps: 'Nordelta, Tigre, Buenos Aires',
+      text: 'Urbanización sobre humedal rellenado. Aplica un programa de manejo de fauna silvestre.' },
+    { name: 'Villanueva', where: 'Benavídez, Tigre', maps: 'Villanueva, Benavídez, Buenos Aires',
+      text: 'Complejo de EIDICO con corredores ribereños y reforestación nativa.' },
+    { name: 'Dique Luján', where: 'Tigre, Buenos Aires', maps: 'Dique Luján, Buenos Aires',
+      text: 'Zona baja que la reforestación de Villanueva busca conectar biológicamente.' },
+    { name: 'Villa La Ñata', where: 'Tigre, Buenos Aires', maps: 'Villa La Ñata, Buenos Aires',
+      text: 'Zona baja que la reforestación de Villanueva busca conectar biológicamente.' }
+  ]},
+  { h: 'Conservación', items: [
+    { name: 'Fundación Temaikèn', where: 'Escobar, Buenos Aires', url: 'https://www.temaiken.org.ar',
+      text: 'Centro de Recuperación de Especies (CRET) y Programa Delta.' }
+  ]}
 ];
+
+/* Territorios del capítulo 04 (se toman de la lista anterior) */
+const TERRITORIES = ['Tigre', 'Nordelta', 'Villanueva', 'Dique Luján', 'Villa La Ñata'];
+
+/* ---------- Comparador del capítulo 04 ----------
+   Colocá las dos imágenes en la carpeta img/ con estos nombres
+   (o cambiá las rutas). Ver el README para obtenerlas. */
+const COMPARE = {
+  before: { src: 'img/nordelta-antes.jpg', label: 'c. 2000' },
+  after:  { src: 'img/nordelta-hoy.jpg',  label: 'Hoy' },
+  caption: 'Nordelta y Villanueva (Tigre) vistas desde arriba, antes y después de la urbanización. Deslizá para comparar.',
+  credit: 'Imágenes: Google Earth'
+};
 
 /* ---------- Organizaciones ---------- */
 const ORG_CATS = {
@@ -280,30 +319,100 @@ const TIMELINE = [
 
 /* ---------- Carrusel de paisajes ---------- */
 const LANDSCAPES = [
-  { wiki: 'es:Delta del Paraná|en:Paraná Delta', cap: 'Delta del Paraná' },
+  { wiki: 'en:Paraná Delta', cap: 'Vista aérea del Bajo Delta, al norte de Buenos Aires' },
   { wiki: 'es:Parque nacional Ciervo de los Pantanos|en:Ciervo de los Pantanos National Park', cap: 'Parque Nacional Ciervo de los Pantanos' },
   { wiki: 'es:Parque nacional Pre-Delta|en:Pre-Delta National Park', cap: 'Parque Nacional Pre-Delta' },
   { wiki: 'es:Bahía Samborombón|en:Samborombón Bay', cap: 'Bahía de Samborombón' },
-  { wiki: 'es:Río Paraná|en:Paraná River', cap: 'Río Paraná' }
+  { cap: 'El río Paraná y su delta desde la Estación Espacial Internacional (2015)',
+    src: 'https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/85000/85950/iss043e91884.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
+    credit: 'Imagen: <a href="https://science.nasa.gov/earth/earth-observatory/good-air-and-brown-water-85950/" target="_blank" rel="noopener">NASA Earth Observatory</a> · fotografía de astronauta ISS043-E-91884 · dominio público' }
 ];
 
 /* ---------- Trivia ---------- */
-const QUIZ = [
+/* Cada partida toma 5 preguntas al azar, priorizando las que la persona todavía no respondió.
+   Para agregar preguntas: q = pregunta, o = opciones, a = índice de la correcta (0 = primera), e = explicación. */
+const QUIZ_BANK = [
   { q: '¿Cuántas hectáreas de bañados de agua dulce se perdieron en el Bajo Delta entre 1999 y 2013?',
     o: ['Unas 16.300 ha', 'Unas 163.000 ha', 'Unas 1,6 millones de ha', 'Unas 5.200 ha'], a: 1,
     e: 'Fueron aproximadamente 163.000 ha, cerca de un tercio de los bañados de agua dulce del Bajo Delta.' },
   { q: '¿En qué se convirtió cerca del 70 % de esa superficie perdida?',
     o: ['Barrios cerrados', 'Puertos', 'Pasturas para ganado', 'Plantaciones forestales'], a: 2,
-    e: 'La transformación en pasturas para ganado fue una de las principales causas de pérdida de bañados en ese período.' },
+    e: 'Según la tesis de Sica (UBA, 2016), el 70 % de la pérdida se debió a la conversión en pasturas para ganado.' },
+  { q: 'Que se haya perdido un tercio de los bañados del Bajo Delta significa que…',
+    o: ['Desapareció un tercio de los animales', 'Se redujo el hábitat disponible, pero no hay una cifra de cuántos animales se perdieron', 'La cantidad de animales no cambió', 'Se perdieron dos tercios de los animales'], a: 1,
+    e: 'Es una medida de superficie de hábitat. No existe un porcentaje único de animales perdidos en todo el Delta.' },
   { q: 'Si una causa tiene un “procesamiento confirmado”, significa que…',
     o: ['Las personas acusadas fueron condenadas', 'El juez considera que hay elementos para avanzar, pero no hay condena', 'La causa fue archivada', 'La empresa ya reparó el daño'], a: 1,
     e: 'El procesamiento es una etapa del proceso. Las responsabilidades solo quedan establecidas con una sentencia firme.' },
+  { q: '¿Qué significa que una causa sea “elevada a juicio”?',
+    o: ['Que hubo una condena', 'Que la causa pasa a juicio oral, donde un tribunal decidirá', 'Que la causa se cerró', 'Que las partes llegaron a un acuerdo'], a: 1,
+    e: 'Es la etapa en la que un tribunal decidirá si hay responsabilidad penal. Tampoco es una condena.' },
+  { q: 'En el caso de Naviera Lojda S.A. (Paso del Tonelero, Ramallo), ¿en qué situación está la causa?',
+    o: ['Investigación en trámite', 'Sentencia firme, con la recomposición del ambiente pendiente', 'Procesamiento confirmado', 'Causa archivada'], a: 1,
+    e: 'Es el único de los cuatro casos con sentencia firme: la empresa debe recomponer el humedal.' },
+  { q: '¿Qué porcentaje del territorio bonaerense se estima que corresponde a humedales?',
+    o: ['Entre el 5 % y el 10 %', 'Entre el 30 % y el 35 %', 'Entre el 50 % y el 60 %', 'Alrededor del 80 %'], a: 1,
+    e: 'Se estima entre el 30 % y el 35 %, aunque la cifra varía según cómo se identifiquen y delimiten los humedales.' },
+  { q: '¿Cuántas especies de plantas hay, aproximadamente, en los humedales del Delta del Paraná?',
+    o: ['Entre 60 y 70', 'Entre 150 y 200', 'Entre 643 y 700', 'Entre 6.000 y 7.000'], a: 2,
+    e: 'Las fuentes consultadas hablan de entre 643 y 700 especies de plantas, aproximadamente.' },
+  { q: '¿Cuántas hectáreas protege el Parque Nacional Ciervo de los Pantanos?',
+    o: ['520 ha', '5.200 ha', '52.000 ha', '163.000 ha'], a: 1,
+    e: 'Protege 5.200 hectáreas de pastizales, bosque de ribera y humedales.' },
   { q: '¿Cuál es el único sauce nativo de Argentina?',
     o: ['Sauce llorón', 'Sauce criollo', 'Sauce eléctrico', 'Aliso de río'], a: 1,
     e: 'El sauce criollo (Salix humboldtiana) es el único sauce nativo del país y crece en las orillas.' },
+  { q: '¿Qué árbol del Delta es la flor nacional argentina?',
+    o: ['Espinillo', 'Curupí', 'Ceibo', 'Sauce criollo'], a: 2,
+    e: 'El ceibo, inconfundible por sus flores rojas, es uno de los árboles característicos del bosque ribereño.' },
+  { q: '¿Qué árbol es de los primeros en crecer cuando se forma una isla nueva?',
+    o: ['Aliso de río', 'Ceibo', 'Curupí', 'Espinillo'], a: 0,
+    e: 'El aliso de río es un arbolito pionero de las islas nuevas.' },
+  { q: '¿Qué planta flotante de flores lilas funciona como “balsa natural” del río?',
+    o: ['Irupé', 'Junco', 'Camalote', 'Cortadera'], a: 2,
+    e: 'El camalote flota y transporta a muchos pequeños animales aguas abajo.' },
   { q: '¿Qué animal del Delta pesa hasta 150 kilos y tiene pezuñas adaptadas para no hundirse en el barro?',
     o: ['Carpincho', 'Coipo', 'Ciervo de los pantanos', 'Lobito de río'], a: 2,
-    e: 'El ciervo de los pantanos, el animal más grande y más amenazado del Delta.' }
+    e: 'El ciervo de los pantanos, el animal más grande y más amenazado del Delta.' },
+  { q: '¿Qué tipo de animal es el lobito de río?',
+    o: ['Un roedor herbívoro', 'Una nutria carnívora', 'Un ave pescadora', 'Un pez de fondo'], a: 1,
+    e: 'Es una nutria carnívora, juguetona y escurridiza.' },
+  { q: '¿De qué se alimenta casi exclusivamente el gavilán caracolero?',
+    o: ['De mojarras', 'De ranas', 'De los caracoles grandes del río', 'De semillas'], a: 2,
+    e: 'Se alimenta casi exclusivamente de caracoles grandes, como el caracol manzana.' },
+  { q: '¿Por qué se ve al biguá quieto al sol con las alas abiertas?',
+    o: ['Para secarse después de sumergirse a pescar', 'Para atraer pareja', 'Para espantar a otras aves', 'Para dar sombra a sus pichones'], a: 0,
+    e: 'Después de bucear se queda al sol con las alas abiertas para secarse.' },
+  { q: 'Al lagarto overo a veces se lo llama “iguana”. ¿Qué es en realidad?',
+    o: ['Una iguana', 'Un lagarto, no una iguana', 'Un anfibio', 'Una tortuga terrestre'], a: 1,
+    e: 'Es un lagarto de la familia de los teidos (Salvator merianae), no una iguana.' },
+  { q: '¿Cuál de estos animales del Delta es venenoso?',
+    o: ['La culebra acuática', 'La yarará', 'El lagarto overo', 'La tortuga campanita'], a: 1,
+    e: 'Las culebras acuáticas son inofensivas para las personas; de la yarará hay que mantenerse lejos.' },
+  { q: '¿Qué ave, amenazada a nivel mundial, dejó de registrarse en el relevamiento de aves del Bajo Delta de 2012-2013?',
+    o: ['El chajá', 'La garza blanca', 'El tordo amarillo', 'El biguá'], a: 2,
+    e: 'El tordo amarillo no fue detectado en los relevamientos recientes (Sica y otros, 2018).' },
+  { q: '¿Qué es el “efecto isla” en las zonas urbanizadas?',
+    o: ['La formación de islas nuevas en el río', 'La división del territorio en parches aislados por el asfalto y los muros', 'Una laguna artificial en medio de un barrio', 'El aumento de la temperatura en las islas'], a: 1,
+    e: 'Los animales quedan encerrados en fragmentos de hábitat; si se mueven, los atropellan o los atacan animales domésticos.' },
+  { q: '¿Por qué las medidas ambientales de Nordelta y Villanueva se consideran de mitigación?',
+    o: ['Porque el humedal original fue rellenado y no se recupera el ambiente previo', 'Porque son obligatorias por ley', 'Porque solo duran un verano', 'Porque las financia el Estado'], a: 0,
+    e: 'Reducen daños, pero la fauna sigue atrapada entre muros y paredones, con el paso hacia el río dificultado.' },
+  { q: '¿Qué método aplica Nordelta para evitar la sobrepoblación de carpinchos?',
+    o: ['El sacrificio de animales', 'Un control ético de natalidad (vasectomías)', 'Cercar las lagunas', 'Reducir el agua de las lagunas'], a: 1,
+    e: 'Hacen censos con drones y aplican vasectomías, sin recurrir al sacrificio.' },
+  { q: '¿Para qué conserva Villanueva los juncos y totoras en los márgenes de las lagunas?',
+    o: ['Como decoración', 'Para filtrar el agua y dar refugio a anfibios, coipos y tortugas', 'Para la pesca deportiva', 'Para reducir los mosquitos'], a: 1,
+    e: 'Forman corredores ribereños que filtran el agua y dan refugio a la fauna.' },
+  { q: '¿Cuántos animales devolvió a la naturaleza el Centro de Recuperación de Especies de Temaikèn?',
+    o: ['Unos 40', 'Unos 400', 'Más de 4.000', 'Más de 40.000'], a: 2,
+    e: 'Según su Memoria Anual 2023, más de 4.000 animales rehabilitados volvieron a la naturaleza.' },
+  { q: '¿En qué año una porción del Delta del Paraná se incorporó como sitio Ramsar?',
+    o: ['1971', '2000', '2016', '2023'], a: 2,
+    e: 'Fue en 2016. 1971 es el año en que se firmó la Convención de Ramsar.' },
+  { q: 'Según el IPBES (2019), ¿cuántas especies están en peligro de extinción en el mundo?',
+    o: ['Unas 10.000', 'Unas 100.000', 'Más de 1 millón', 'Más de 10 millones'], a: 2,
+    e: 'Más de 1 millón, y la pérdida de hábitat es la causa número uno. Es un dato global, no del Delta.' }
 ];
 
 /* ---------- Fuentes ---------- */
@@ -313,8 +422,8 @@ const SOURCES = [
     { t: 'Gobierno nacional: qué son los humedales y por qué conservarlos.' },
     { t: 'Malvárez, A. I. (1999). El Delta del Río Paraná como mosaico de humedales. En: Tópicos sobre humedales subtropicales y templados de Sudamérica (UBA).' },
     { t: 'Kalesnik, F., & Quintana, R. D. (2006). Las especies de flora y fauna del Bajo Delta del río Paraná. CONICET – UBA.' },
-    { t: 'Estudio científico sobre la pérdida de humedales del Bajo Delta, 1999–2013 (referencia completa a verificar).' },
-    { t: 'Estudio sobre las aves del Bajo Delta, 1997–1999 y 2012–2013 (referencia completa a verificar).' },
+    { t: 'Sica, Y. V. (2016). Cambios en el uso del suelo y sus efectos a diferentes escalas espaciales y temporales sobre la diversidad de aves en el Bajo Delta del río Paraná. Tesis doctoral, FCEN-UBA.', url: 'https://core.ac.uk/download/322642271.pdf' },
+    { t: 'Sica, Y. V., Gavier-Pizarro, G. I., Pidgeon, A. M., Travaini, A., Bustamante Santos, A. J., Radeloff, V. C., & Quintana, R. D. (2018). Changes in bird assemblages in a wetland ecosystem after 14 years of intensified cattle farming. Austral Ecology, 43(7), 786–797.', url: 'https://doi.org/10.1111/aec.12621' },
     { t: 'Información sobre el Delta del Paraná y los sitios Ramsar.' },
     { t: 'Levrand, N. E. (2023). El concepto científico de humedal en la creación del sitio Ramsar delta del Paraná, Argentina.', url: 'https://agris.fao.org/search/ru/records/65fc130c85e84924f70b8aaf' }
   ]},
@@ -348,6 +457,9 @@ const SOURCES = [
     { t: 'Fundación Rewilding Argentina (s.f.). Proyectos de reintroducción de especies.', url: 'https://www.rewildingargentina.org' },
     { t: 'FARN (2023). Informes sobre políticas ambientales y protección de humedales.', url: 'https://farn.org.ar' },
     { t: 'Análisis Digital (2021). CAUCE y FARN, “amigos del tribunal” en la causa por quemas en el Delta.', url: 'https://www.analisisdigital.com.ar/judiciales/2021/02/19/cauce-y-farn-se-presentaron-como-amigos-del-tribunal-en-la-causa-por-quemas-en' }
+  ]},
+  { h: 'Imágenes', items: [
+    { t: 'NASA Earth Observatory (2015). Good Air and Brown Water. Fotografía de astronauta ISS043-E-91884.', url: 'https://science.nasa.gov/earth/earth-observatory/good-air-and-brown-water-85950/' }
   ]},
   { h: 'Casos judiciales', items: [
     { t: 'La Voz de Ramallo, 28/09/2026 — sentencia firme en Paso del Tonelero.' },
@@ -432,6 +544,7 @@ function pickSrc(info, w) {
 
 function creditHTML(info) {
   if (!info) return '';
+  if (info.custom) return info.custom;
   const link = info.file || info.page;
   return `Foto: <a href="${esc(link)}" target="_blank" rel="noopener">Wikimedia Commons</a> · autoría y licencia en la página del archivo`;
 }
@@ -447,6 +560,18 @@ function placeholder(el) {
 async function loadWimg(el) {
   if (el.dataset.loaded) return;
   el.dataset.loaded = '1';
+  // Imagen con URL directa (no pasa por Wikipedia)
+  if (el.dataset.src) {
+    el._info = { custom: el.dataset.creditHtml || '' };
+    const img = new Image();
+    img.alt = el.dataset.alt || el.dataset.label || '';
+    img.decoding = 'async';
+    img.onload = () => { img.classList.add('is-loaded'); el.dispatchEvent(new CustomEvent('wimg:loaded', { detail: el._info })); };
+    img.onerror = () => { img.remove(); placeholder(el); };
+    img.src = el.dataset.src;
+    el.appendChild(img);
+    return;
+  }
   const spec = el.dataset.wiki || '';
   const w = parseInt(el.dataset.w || '500', 10);
   if (!spec) { placeholder(el); return; }
@@ -590,7 +715,7 @@ function initCarousel() {
   let idx = 0, timer = null, visible = false;
 
   track.innerHTML = LANDSCAPES.map((s, i) =>
-    `<div class="carousel__slide wimg" data-wiki="${esc(s.wiki)}" data-w="1280" data-label="${esc(s.cap)}" data-icon="image" data-alt="${esc(s.cap)}" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${LANDSCAPES.length}"></div>`
+    `<div class="carousel__slide wimg" ${s.src ? `data-src="${esc(s.src)}" data-credit-html="${esc(s.credit || '')}"` : `data-wiki="${esc(s.wiki)}"`} data-w="1280" data-label="${esc(s.cap)}" data-icon="image" data-alt="${esc(s.cap)}" role="group" aria-roledescription="diapositiva" aria-label="${i + 1} de ${LANDSCAPES.length}"></div>`
   ).join('');
   dots.innerHTML = LANDSCAPES.map((s, i) => `<button role="tab" aria-label="Ir a ${esc(s.cap)}" aria-selected="${i === 0}"></button>`).join('');
   const slides = $$('.carousel__slide', track);
@@ -655,15 +780,10 @@ function renderSpecies(group) {
   $('#tabIntro').textContent = GROUPS[group].intro;
   grid.innerHTML = SPECIES[group].map((sp, i) => `
     <button class="scard" data-i="${i}" style="animation-delay:${Math.min(i, 10) * 50}ms" aria-label="Ver ficha de ${esc(sp.name)}">
-      ${sp.status ? `<span class="scard__flag">${esc(sp.status)}</span>` : ''}
-      ${sp.community ? `<span class="scard__flag scard__flag--com">Comunidad</span>` : ''}
       <span class="scard__more" aria-hidden="true"><i data-lucide="plus"></i></span>
       <div class="scard__media wimg" data-wiki="${esc(speciesWiki(sp))}" data-w="500" data-icon="${GROUPS[group].icon}" data-label="${esc(sp.name)}" data-alt="${esc(sp.name)}"></div>
       <div class="scard__body">
         <p class="scard__name">${esc(sp.name)}</p>
-        <p class="scard__sci">${esc(sp.sci)}</p>
-        <p class="scard__desc">${esc(sp.desc)}</p>
-        <div class="scard__traits">${sp.traits.map(t => `<span class="trait">${esc(t)}</span>`).join('')}</div>
       </div>
     </button>`).join('');
   observeImages(grid);
@@ -759,6 +879,24 @@ function initModal() {
    ========================================================= */
 function initCompare() {
   const range = $('#compareRange'), top = $('#compareTop'), handle = $('#compareHandle');
+  const slot = (el, cfg, alt) => {
+    const img = new Image();
+    img.alt = alt;
+    img.onload = () => img.classList.add('is-loaded');
+    img.onerror = () => {
+      img.remove();
+      el.innerHTML = `<div class="compare__missing"><i data-lucide="image-plus"></i><span>Falta la imagen<br><code>${esc(cfg.src)}</code></span></div>`;
+      refreshIcons();
+    };
+    img.src = cfg.src;
+    el.appendChild(img);
+  };
+  slot($('#compareBefore'), COMPARE.before, `Vista aérea de Nordelta y Villanueva, ${COMPARE.before.label}`);
+  slot($('#compareAfter'), COMPARE.after, `Vista aérea de Nordelta y Villanueva, ${COMPARE.after.label}`);
+  $('#compareTagL').textContent = COMPARE.before.label;
+  $('#compareTagR').textContent = COMPARE.after.label;
+  $('#compareCap').innerHTML = `${esc(COMPARE.caption)} <span class="compare__credit">${esc(COMPARE.credit)}</span>`;
+
   const set = v => { top.style.clipPath = `inset(0 0 0 ${v}%)`; handle.style.left = `${v}%`; };
   range.addEventListener('input', () => set(range.value));
   set(range.value);
@@ -852,12 +990,33 @@ function initCharts() {
 }
 
 /* =========================================================
-   10. CAPÍTULO 06: MAPA, FILTROS Y FICHAS JUDICIALES
+   10. CAPÍTULO 06: LUGARES, FILTROS Y FICHAS JUDICIALES
    ========================================================= */
 const filters = { place: 'all', status: 'all' };
-let map = null;
-const layers = {};
-const caseMarkers = {};
+
+const mapsURL = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const placeHref = p => p.url || mapsURL(p.maps);
+
+function initPlaces() {
+  $('#placeList').innerHTML = PLACE_GROUPS.map(g => `
+    <section class="pgroup">
+      <h3 class="pgroup__h">${esc(g.h)}</h3>
+      <ul>${g.items.map(p => `
+        <li><a class="place" href="${esc(placeHref(p))}" target="_blank" rel="noopener">
+          <span class="place__top"><span class="place__name">${esc(p.name)}</span>
+            <span class="place__kind"><i data-lucide="${p.url ? 'globe' : 'map-pin'}"></i>${p.url ? 'Sitio oficial' : 'Google Maps'}</span></span>
+          <span class="place__where">${esc(p.where)}</span>
+          <span class="place__text">${esc(p.text)}</span>
+        </a></li>`).join('')}
+      </ul>
+    </section>`).join('');
+
+  // Territorios del capítulo 04
+  const all = PLACE_GROUPS.flatMap(g => g.items);
+  $('#placesRow').innerHTML = TERRITORIES.map(n => all.find(p => p.name === n)).filter(Boolean).map(p => `
+    <a href="${esc(placeHref(p))}" target="_blank" rel="noopener"><b>${esc(p.name)} <i data-lucide="arrow-up-right"></i></b>${esc(p.text)}</a>`).join('');
+  refreshIcons();
+}
 
 function tagHTML(k) {
   const s = STATUS[k];
@@ -919,7 +1078,6 @@ function caseCard(c) {
         <ul class="ccard__src">${c.sources.map(s => `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.t)}</a>` : esc(s.t)}</li>`).join('')}</ul>
         ${c.note ? `<p class="ccard__note"><strong>Nota de verificación.</strong> ${esc(c.note)}</p>` : ''}
         <p class="ccard__legal">${esc(c.legal)}</p>
-        <button class="ccard__map" data-map="${c.id}"><i data-lucide="locate"></i>Ver en el mapa</button>
       </div></div>
     </div>
   </article>`;
@@ -938,108 +1096,16 @@ function renderCases() {
     ? visible.map(caseCard).join('')
     : `<div class="cases__empty"><p>No hay casos con esa combinación de filtros.</p><button class="chip is-active" id="resetFilters">Quitar filtros</button></div>`;
   const r = $('#resetFilters'); if (r) r.addEventListener('click', resetFilters);
-  updateCaseMarkers();
   refreshIcons();
 }
 
 function initCaseList() {
   $('#caseList').addEventListener('click', e => {
-    const mapBtn = e.target.closest('[data-map]');
-    if (mapBtn) { focusCaseOnMap(mapBtn.dataset.map); return; }
     if (e.target.closest('a')) return;
     const head = e.target.closest('[data-toggle]');
     if (head) { const card = head.closest('.ccard'); setCaseOpen(card, !card.classList.contains('is-open')); }
   });
   $('#glossaryList').innerHTML = Object.values(STATUS).map(s => `<dt><span class="tag" style="--c:${s.color};color:${s.ink}">${esc(s.label)}</span></dt><dd>${esc(s.def)}</dd>`).join('');
-}
-
-function openCaseCard(id) {
-  const card = document.getElementById(`case-${id}`);
-  if (!card) { resetFilters(); return openCaseCard(id); }
-  setCaseOpen(card, true);
-  card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-  card.classList.add('is-hl');
-  setTimeout(() => card.classList.remove('is-hl'), 1800);
-}
-
-function focusCaseOnMap(id) {
-  if (!map) return;
-  const m = caseMarkers[id];
-  if (!m) return;
-  if (!map.hasLayer(layers.casos)) { map.addLayer(layers.casos); $('#mapLayers input[data-layer="casos"]').checked = true; }
-  if (window.innerWidth < 960) $('#map').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-  map.flyTo(m.getLatLng(), 11, { duration: reduceMotion ? 0 : 1.1 });
-  setTimeout(() => m.openPopup(), reduceMotion ? 0 : 1150);
-}
-
-function updateCaseMarkers() {
-  if (!map || !layers.casos) return;
-  CASES.forEach(c => {
-    const m = caseMarkers[c.id];
-    const show = caseMatches(c);
-    if (show && !layers.casos.hasLayer(m)) layers.casos.addLayer(m);
-    if (!show && layers.casos.hasLayer(m)) layers.casos.removeLayer(m);
-  });
-}
-
-function initMap() {
-  const el = $('#map');
-  if (!window.L) {
-    el.innerHTML = '<p style="padding:24px;color:#202923">No se pudo cargar el mapa. Revisá la conexión a internet.</p>';
-    return;
-  }
-  map = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
-  // Mapa base CARTO Voyager. La key va dentro de la URL.
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 18,
-    maxNativeZoom: 16,
-    attribution: 'Mapa base &copy; <a href="https://www.esri.com">Esri</a>, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-
-  // Rueda del mouse solo después de hacer clic en el mapa
-  map.on('click', () => map.scrollWheelZoom.enable());
-  map.on('mouseout', () => map.scrollWheelZoom.disable());
-
-  ['casos', 'protegidas', 'urbano', 'conservacion'].forEach(k => { layers[k] = L.layerGroup().addTo(map); });
-  const colors = { protegidas: '#52B788', urbano: '#8a8f8b', conservacion: '#5e8fa3' };
-  const kinds = { protegidas: 'Área protegida', urbano: 'Urbanización', conservacion: 'Conservación' };
-  const bounds = [];
-
-  POIS.forEach(p => {
-    const icon = L.divIcon({ className: '', html: `<div class="mk" style="background:${colors[p.layer]}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
-    L.marker([p.lat, p.lng], { icon, title: p.name, keyboard: true })
-      .bindPopup(`<p class="pop__k">${kinds[p.layer]}</p><p class="pop__t">${esc(p.name)}</p><p class="pop__p">${esc(p.text)}</p><p class="pop__a">Ubicación aproximada</p>`)
-      .addTo(layers[p.layer]);
-    bounds.push([p.lat, p.lng]);
-  });
-
-  CASES.forEach(c => {
-    const st = STATUS[c.status[0]];
-    const icon = L.divIcon({ className: '', html: `<div class="mk mk--caso" style="background:${st.color}"></div>`, iconSize: [22, 22], iconAnchor: [11, 11] });
-    const m = L.marker([c.lat, c.lng], { icon, title: c.company, keyboard: true, zIndexOffset: 500 })
-      .bindPopup(`<p class="pop__k">Caso judicial · ${esc(PLACES[c.place])}</p><p class="pop__t">${esc(c.company)}</p><p class="pop__p">${esc(c.problem)}</p><div class="tags">${c.status.map(tagHTML).join('')}</div><p class="pop__a" style="margin-top:8px!important">Ubicación aproximada</p><button class="pop__btn" data-open-case="${c.id}">Ver ficha completa</button>`, { maxWidth: 300 });
-    caseMarkers[c.id] = m;
-    layers.casos.addLayer(m);
-    bounds.push([c.lat, c.lng]);
-  });
-
-  map.fitBounds(bounds, { padding: [30, 30] });
-
-  map.on('popupopen', e => {
-    const btn = e.popup.getElement().querySelector('[data-open-case]');
-    if (btn) btn.addEventListener('click', () => { map.closePopup(); openCaseCard(btn.dataset.openCase); });
-  });
-
-  $$('#mapLayers input').forEach(inp => inp.addEventListener('change', () => {
-    const l = layers[inp.dataset.layer];
-    inp.checked ? map.addLayer(l) : map.removeLayer(l);
-  }));
-
-  // Recalcular tamaño cuando el mapa entra en pantalla (por las animaciones)
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(en => { if (en[0].isIntersecting) setTimeout(() => map.invalidateSize(), 400); }, { threshold: 0.1 }).observe(el);
-  }
-  window.addEventListener('resize', () => map.invalidateSize());
 }
 
 /* =========================================================
@@ -1109,15 +1175,43 @@ function initRecovery() {
 /* =========================================================
    13. CAPÍTULO 09: TRIVIA
    ========================================================= */
+const QUIZ_SIZE = 5;
+const QUIZ_KEY = 'dv-quiz-respondidas';
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
 function initQuiz() {
   const root = $('#quiz');
-  let i = 0, score = 0;
+  // Preguntas ya respondidas por esta persona (se recuerdan en este navegador)
+  let answered = new Set((store.get(QUIZ_KEY) || []).filter(n => n < QUIZ_BANK.length));
+  let round = [], i = 0, score = 0;
+
+  const newRound = () => {
+    let pending = shuffle(QUIZ_BANK.map((_, n) => n).filter(n => !answered.has(n)));
+    if (pending.length < QUIZ_SIZE) {
+      // Se agotaron las nuevas: se completan con otras y se reinicia el registro
+      const rest = shuffle(QUIZ_BANK.map((_, n) => n).filter(n => !pending.includes(n)));
+      pending = pending.concat(rest).slice(0, QUIZ_SIZE);
+      answered = new Set();
+    }
+    round = pending.slice(0, QUIZ_SIZE).map(n => {
+      const q = QUIZ_BANK[n];
+      const order = shuffle(q.o.map((_, k) => k));
+      return { n, q: q.q, e: q.e, o: order.map(k => q.o[k]), a: order.indexOf(q.a) };
+    });
+    i = 0; score = 0;
+    renderQ();
+  };
 
   const renderQ = () => {
-    const q = QUIZ[i];
+    const q = round[i];
     root.innerHTML = `
-      <div class="quiz__top"><span>Trivia ambiental</span><span>Pregunta ${i + 1} de ${QUIZ.length}</span></div>
-      <div class="quiz__bar"><span style="width:${(i / QUIZ.length) * 100}%"></span></div>
+      <div class="quiz__top"><span>Trivia ambiental</span><span>Pregunta ${i + 1} de ${round.length}</span></div>
+      <div class="quiz__bar"><span style="width:${(i / round.length) * 100}%"></span></div>
       <p class="quiz__q">${esc(q.q)}</p>
       <div class="quiz__opts">${q.o.map((o, j) => `<button class="opt" data-j="${j}"><span class="opt__l">${'ABCD'[j]}</span>${esc(o)}</button>`).join('')}</div>
       <div id="quizFb"></div>`;
@@ -1125,17 +1219,19 @@ function initQuiz() {
   };
 
   const answer = j => {
-    const q = QUIZ[i];
+    const q = round[i];
     const opts = $$('.opt', root);
     opts.forEach(o => { o.disabled = true; });
     opts[q.a].classList.add('is-right');
     const ok = j === q.a;
     if (ok) score++; else opts[j].classList.add('is-wrong');
-    const last = i === QUIZ.length - 1;
+    answered.add(q.n);
+    store.set(QUIZ_KEY, Array.from(answered));
+    const last = i === round.length - 1;
     $('#quizFb').innerHTML = `
       <p class="quiz__fb"><b>${ok ? '¡Correcto!' : 'No es esa.'}</b> ${esc(q.e)}</p>
       <div class="quiz__foot"><button class="btn btn--dark" id="quizNext">${last ? 'Ver resultado' : 'Siguiente'} <i data-lucide="arrow-right"></i></button></div>`;
-    $('.quiz__bar span', root).style.width = `${((i + 1) / QUIZ.length) * 100}%`;
+    $('.quiz__bar span', root).style.width = `${((i + 1) / round.length) * 100}%`;
     refreshIcons();
     const next = $('#quizNext');
     next.focus();
@@ -1143,21 +1239,24 @@ function initQuiz() {
   };
 
   const result = () => {
-    const msg = score === QUIZ.length ? '¡Excelente! Conocés el Delta a fondo.'
+    const total = round.length;
+    const msg = score === total ? '¡Excelente! Conocés el Delta a fondo.'
       : score >= 3 ? 'Muy bien. Un repaso por los capítulos y completás el mapa.'
       : 'Buen comienzo: todas las respuestas están en este recorrido.';
+    const left = QUIZ_BANK.length - answered.size;
     root.innerHTML = `
       <div class="quiz__score">
         <div class="quiz__top" style="justify-content:center"><span>Resultado</span></div>
-        <p class="quiz__big">${score}<small style="font-size:.4em;color:#52B788">/${QUIZ.length}</small></p>
+        <p class="quiz__big">${score}<small style="font-size:.4em;color:#52B788">/${total}</small></p>
         <p>${msg}</p>
-        <button class="btn btn--dark" id="quizRestart"><i data-lucide="rotate-ccw"></i> Volver a jugar</button>
+        <p class="quiz__left">${left >= QUIZ_SIZE ? `Te quedan ${left} preguntas nuevas.` : 'Ya respondiste casi todas: la próxima ronda vuelve a mezclar el banco completo.'}</p>
+        <button class="btn btn--dark" id="quizRestart"><i data-lucide="rotate-ccw"></i> Jugar otra ronda</button>
       </div>`;
     refreshIcons();
-    $('#quizRestart').addEventListener('click', () => { i = 0; score = 0; renderQ(); });
+    $('#quizRestart').addEventListener('click', newRound);
   };
 
-  renderQ();
+  newRound();
 }
 
 /* =========================================================
@@ -1189,7 +1288,7 @@ document.addEventListener('DOMContentLoaded', () => {
   safe(initTimeline, 'línea de tiempo');
   safe(initCharts, 'gráficos');
   safe(initFilters, 'filtros');
-  safe(initMap, 'mapa');
+  safe(initPlaces, 'lugares');
   safe(initCaseList, 'casos');
   safe(renderCases, 'casos');
   safe(initOrgs, 'organizaciones');
